@@ -1,4 +1,5 @@
 ---
+title: "Suplementary Materials for 'The speakers of minority languages are more multilingual'"
 author: "N. Dobrushina, G. Moroz"
 output: 
   html_document:
@@ -22,7 +23,7 @@ library(tidyverse)
 
 [![DOI](https://zenodo.org/badge/296071681.svg)](https://zenodo.org/badge/latestdoi/296071681)
 
-# Suplementary Material for 'The speakers of minority languages are more multilingual' {.tabset .tabset-fade .tabset-pills}
+# {.tabset .tabset-fade .tabset-pills}
 
 ## Suplementary Materials
 
