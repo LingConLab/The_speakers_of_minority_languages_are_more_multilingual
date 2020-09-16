@@ -18,6 +18,10 @@ knitr::opts_chunk$set(fig.width=15, fig.height=7, message=FALSE, warning = FALSE
 library(tidyverse)
 ```
 
+
+
+[![DOI](https://zenodo.org/badge/296071681.svg)](https://zenodo.org/badge/latestdoi/296071681)
+
 # Suplementary Material for 'The speakers of minority languages are more multilingual' {.tabset .tabset-fade .tabset-pills}
 
 ## Suplementary Materials
