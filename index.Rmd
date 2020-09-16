@@ -1,0 +1,246 @@
+---
+author: "N. Dobrushina, G. Moroz"
+output: 
+  html_document:
+      df_print: paged
+      code_folding: hide
+knit: (function(inputFile, encoding) { 
+      out_dir <- 'docs';
+      rmarkdown::render(inputFile,
+                        encoding=encoding, 
+                        output_file=file.path(dirname(inputFile), out_dir, 'index.html')) })
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width=15, fig.height=7, message=FALSE, warning = FALSE)
+library(tidyverse)
+```
+
+# Suplementary Material for 'The speakers of minority languages are more multilingual' {.tabset .tabset-fade .tabset-pills}
+
+## Suplementary Materials
+
+### Table 1
+Size of language population in Dagestan according to census 1926
+
+```{r}
+read_csv("lect_census_1926_present_in_study.csv") %>% 
+  DT::datatable()
+```
+
+### Apendix 1
+
+This table contains the list of the villages used in this paper with information about the lect spoken in a village, the branch or language family to which they belong, their glottocode, and the number of L1 speakers.
+```{r}
+read_csv("data.csv") %>% 
+  select(residence.en, lect, glottocode, branch, census_1926) %>% 
+  distinct() %>% 
+  DT::datatable()
+```
+
+### Apendix 2
+
+Random effects from the model:
+
+* decade
+
+```{r}
+read_csv("decade_random_effects.csv") %>% 
+  DT::datatable()
+```
+
+* residence
+
+```{r}
+read_csv("residence_random_effects.csv") %>% 
+  DT::datatable()
+```
+
+
+
+### Apendix 3
+
+Raw data
+
+```{r}
+read_csv("data.csv") %>% 
+  DT::datatable()
+```
+
+## Code for graphs and statistical modeling
+
+```{r}
+library(tidyverse)
+theme_set(theme_bw())
+read_csv("data.csv") %>% 
+  mutate(sex = ifelse(sex == "м", "m", sex),
+         sex = ifelse(sex == "ж", "f", sex)) %>% 
+  filter(!(is.na(birth)&!is.na(residence.en))) ->
+  df
+
+## For Table 1
+
+df %>% 
+  distinct(lect, census_1926, present_in_multidagestan) %>% 
+  arrange(census_1926) %>% 
+  write_csv("lect_census_1926_present_in_study.csv")
+```
+
+### Figure 1
+
+Correlation between the number of L2s spoken by each person in the database and the
+decade of birth, grouped by gender
+
+```{r}
+cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#0072B2", "#D55E00", "#CC79A7")
+
+df %>%
+  filter(!is.na(sex)) %>% 
+  mutate(birth = 1964) %>% 
+  count(sex, sum_langs, birth) ->
+  counts
+
+df %>%
+  filter(!is.na(sex)) %>% 
+  ggplot(aes(sum_langs, birth))+
+  ggbeeswarm::geom_beeswarm(size = 0.5, cex = 0.7, aes(color = factor(sum_langs)), show.legend = FALSE)+
+  geom_label(data = counts, aes(sum_langs, birth, label = n))+
+  coord_flip()+
+  scale_x_continuous(breaks = 0:6)+
+  scale_y_continuous(breaks = 0:6*10+1900)+
+  scale_color_manual(values=cbPalette)+
+  labs(x = "number of known L2", y = "year of birth")+
+  facet_wrap(~sex)+
+  theme(text = element_text(size = 18))
+
+ggsave("FIG_1.png", device = "png", width = 10, height = 5)
+```
+
+### Figure 2
+
+Correlation of the number of L1 speakers and the number of L2s, colored by gender (female speakers offsetted up, male speakers offsetted down), faceted by decade, and overlaid with regression lines
+
+```{r}
+df %>% 
+  filter(!is.na(sex),
+         !is.na(decade)) %>% 
+  mutate(sum_langs_2 = ifelse(sex == "m", sum_langs-0.05, sum_langs+0.05)) %>% 
+  ggplot(aes(census_1926, sum_langs, color = sex, fill = sex))+
+  geom_point(alpha = 0, show.legend = FALSE)+ 
+  geom_point(alpha = 0.5, show.legend = FALSE, aes(census_1926, sum_langs_2, color = sex, fill = sex))+ 
+  facet_wrap(~decade, scales = "free_x")+
+  geom_smooth(method = "glm", 
+              method.args = list(family = poisson), 
+              aes(group = sex), se = FALSE)+
+  labs(x = "number of speakers",
+       y = "number of L2")+
+  scale_y_continuous(breaks = 0:6)+
+  theme(legend.title = element_blank(),
+        text = element_text(size = 12))+
+  ggthemes::scale_fill_tableau(name=NULL)+
+  ggthemes::scale_colour_tableau(name=NULL)+
+  theme(legend.position = c(1, 1),
+        legend.justification = c(1.1, 1.1))+
+  scale_x_continuous(labels = scales::comma)
+ggsave("FIG_2.png", device = "png", width = 9, height = 7)
+```
+
+### Figure 3
+
+Correlation of the number of L2 and L1 speakers of the same language, faceted by decade, and overlaid with linear regression lines
+
+```{r}
+read_csv("for_fig_3.csv") %>% 
+  group_by(decade) %>%
+  mutate(cor = paste("τ =", round(cor(n, census_1926, method = "kendal"), 3))) %>% 
+  ungroup() %>% 
+  mutate(decade = str_c(decade, ", ", cor)) %>% 
+  ggplot(aes(n, census_1926, label = lang_2_K))+
+  geom_smooth(method = "lm", se = FALSE, linetype = 2)+
+  geom_point()+
+  facet_wrap(~decade, scales = "free")+
+  labs(x = "number of L2 speakers (log scale)", 
+       y = "population according the 1926 census (log scale)")+
+  scale_y_log10(labels = scales::comma)+
+  scale_x_log10(labels = scales::comma)+
+  theme(text = element_text(size = 18))
+ggsave("FIG_3.png", width = 12, height = 7)
+```
+
+
+```{r}
+library(lme4)
+library(lmerTest)
+df %>% 
+  mutate(census_1926_modified = census_1926/10000) %>% 
+  filter(!is.na(sum_langs)) ->
+  df_reg
+
+fit <- glmer(sum_langs~sex*census_1926_modified+(1|decade) + (1|residence.en), data = df_reg, family = "poisson")
+performance::check_overdispersion(fit)
+```
+
+### Table 2
+
+```{r}
+summary(fit)
+data.frame(decade = rownames(ranef(fit)$residence.en),
+           intercept = ranef(fit)$residence.en) %>% 
+  write_csv("residence_random_effects.csv")
+data.frame(decade = rownames(ranef(fit)$decade),
+           intercept = ranef(fit)$decade) %>% 
+  write_csv("decade_random_effects.csv")
+```
+
+### Figure 4
+
+Estimated values of the number of L2s predicted for female and male speakers
+depending on the population size of the L1
+
+```{r}
+df %>% 
+  mutate(sex = ifelse(sex == "f", "female", "male")) %>% 
+  distinct(lect, sex, census_1926, sum_langs) ->
+  for_rug
+
+library(ggeffects)
+plot(ggpredict(fit, terms = c("census_1926_modified", "sex")))+
+  labs(x = "number of L1 speakers", y = "number of L2", title = "")+
+  scale_x_continuous(breaks = 0:5*2.5, labels = scales::comma(0:5*2.5*10000, accuracy = 1))+
+  theme(legend.title = element_blank())+
+  ggthemes::scale_fill_tableau(name=NULL)+
+  ggthemes::scale_colour_tableau(name=NULL)+
+  theme(legend.position = c(1, 1),
+        legend.justification = c(1.1, 1.1),
+        text = element_text(size = 18))
+ggsave("FIG_4.png", device = "png", width = 9, height = 7)
+```
+
+### Figure 5
+
+Estimated values of the number of L2s predicted for female and male speakers
+depending on the size of the L1 community with extrapolation to larger language communities
+
+```{r}
+plot(ggpredict(fit, terms = c("census_1926_modified [0:50]", "sex")))+
+  labs(x = "number of L1 speakers", y = "number of L2", title = "")+
+  scale_x_continuous(breaks = 0:5*10, labels = scales::comma(0:5*10*10000, accuracy = 1))+
+  theme(legend.title = element_blank())+
+  ggthemes::scale_fill_tableau(name=NULL)+
+  ggthemes::scale_colour_tableau(name=NULL)+
+  annotate(geom = "rug", x = for_rug$census_1926/10000)+
+  annotate(geom = "text", x = 31.5, y = 1.25, label = "model extrapolation", size = 4)+
+  annotate(geom = "segment", x = 14, xend = 49, y = 1.15, yend = 1.15, 
+           arrow = arrow(length = unit(.3, 'cm'), type = "closed", ends = "both"))+
+  annotate(geom = "text", x = 7, y = 0.15, label = "model\n interpolation", size = 4)+
+  annotate(geom = "segment", x = 2.5, xend = 11.5, y = 0.03, yend = 0.03, 
+           arrow = arrow(length = unit(.3, 'cm'), type = "closed", ends = "both"))+
+  annotate(geom = "rect", xmin = 2, xmax = 12, ymin = -Inf, ymax = Inf, alpha = 0.06)+
+  annotate(geom = "rect", xmin = 13, xmax = 50, ymin = -Inf, ymax = Inf, alpha = 0.06)+
+  theme(legend.position = c(1, 1),
+        legend.justification = c(1.5, 0.9),
+        text = element_text(size = 18))
+ggsave("FIG_5.png", device = "png", width = 9, height = 7)
+```

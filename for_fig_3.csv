@@ -1,0 +1,105 @@
+decade,languages,n,language_eng,lang_2_K,census_1926,additional,additional_census
+1900,аварский,128,Avar,Avar,124211,NA,NA
+1900,агульский,2,Aghul,Aghul,7272,Koshan Aghul,986
+1900,азербайджанский,76,Azerbaijani,Azerbaijani,39547,NA,NA
+1900,андийский,3,Andi,Upper Andic,6484,Lower Andic,1053
+1900,ахвахский,2,Archi,Archi,856,NA,NA
+1900,багвалинский,3,Bagvalal,Bagvalal,3052,NA,NA
+1900,бежтинский,9,Bezhta,Bezhta,1159,NA,NA
+1900,гинухский,1,Hinuq,Hinuq,150,NA,NA
+1900,даргинский,13,Dargwa,Nuclear North Dargwa,50241,NA,NA
+1900,каратинский,6,Karata,Karata,4763,NA,NA
+1900,кумыкский,23,Kumyk,Kumyk,61357,NA,NA
+1900,лакский,32,Lak,Lak,38607,NA,NA
+1900,лезгинский,27,Lezgian,Lezgian,88349,NA,NA
+1900,табасаранский,5,Tabasaran,Tabasaran,32273,NA,NA
+1900,тукитинский,2,Karata,Tokita Karata,657,NA,NA
+1900,цахурский,1,Tsakhur,Tsakhur,3319,NA,NA
+1900,цезский,12,Tsez,Tsez,2712,Sagadin Tsez,335
+1910,аварский,128,Avar,Avar,124211,NA,NA
+1910,агульский,1,Aghul,Aghul,7272,Koshan Aghul,986
+1910,азербайджанский,91,Azerbaijani,Azerbaijani,39547,NA,NA
+1910,ахвахский,3,Archi,Archi,856,NA,NA
+1910,бежтинский,7,Bezhta,Bezhta,1159,NA,NA
+1910,гинухский,2,Hinuq,Hinuq,150,NA,NA
+1910,даргинский,4,Dargwa,Nuclear North Dargwa,50241,NA,NA
+1910,каратинский,2,Karata,Karata,4763,NA,NA
+1910,кумыкский,25,Kumyk,Kumyk,61357,NA,NA
+1910,лакский,19,Lak,Lak,38607,NA,NA
+1910,лезгинский,39,Lezgian,Lezgian,88349,NA,NA
+1910,рутульский,4,Rutul,Rutul,6539,Borch-Khnov Rutul,3792
+1910,табасаранский,4,Tabasaran,Tabasaran,32273,NA,NA
+1910,тукитинский,1,Karata,Tokita Karata,657,NA,NA
+1910,цахурский,3,Tsakhur,Tsakhur,3319,NA,NA
+1910,цезский,8,Tsez,Tsez,2712,Sagadin Tsez,335
+1920,аварский,217,Avar,Avar,124211,NA,NA
+1920,агульский,5,Aghul,Aghul,7272,Koshan Aghul,986
+1920,азербайджанский,162,Azerbaijani,Azerbaijani,39547,NA,NA
+1920,андийский,2,Andi,Upper Andic,6484,Lower Andic,1053
+1920,ахвахский,2,Archi,Archi,856,NA,NA
+1920,бежтинский,20,Bezhta,Bezhta,1159,NA,NA
+1920,гинухский,5,Hinuq,Hinuq,150,NA,NA
+1920,даргинский,14,Dargwa,Nuclear North Dargwa,50241,NA,NA
+1920,каратинский,7,Karata,Karata,4763,NA,NA
+1920,кумыкский,31,Kumyk,Kumyk,61357,NA,NA
+1920,лакский,27,Lak,Lak,38607,NA,NA
+1920,лезгинский,64,Lezgian,Lezgian,88349,NA,NA
+1920,рутульский,11,Rutul,Rutul,6539,Borch-Khnov Rutul,3792
+1920,табасаранский,12,Tabasaran,Tabasaran,32273,NA,NA
+1920,хновский рутульский,2,Rutul,Borch-Khnov Rutul,3792,NA,NA
+1920,цахурский,3,Tsakhur,Tsakhur,3319,NA,NA
+1920,цезский,24,Tsez,Tsez,2712,Sagadin Tsez,335
+1930,аварский,297,Avar,Avar,124211,NA,NA
+1930,агульский,8,Aghul,Aghul,7272,Koshan Aghul,986
+1930,азербайджанский,234,Azerbaijani,Azerbaijani,39547,NA,NA
+1930,андийский,4,Andi,Upper Andic,6484,Lower Andic,1053
+1930,ахвахский,10,Archi,Archi,856,NA,NA
+1930,багвалинский,8,Bagvalal,Bagvalal,3052,NA,NA
+1930,бежтинский,15,Bezhta,Bezhta,1159,NA,NA
+1930,гинухский,6,Hinuq,Hinuq,150,NA,NA
+1930,даргинский,14,Dargwa,Nuclear North Dargwa,50241,NA,NA
+1930,каратинский,5,Karata,Karata,4763,NA,NA
+1930,кумыкский,54,Kumyk,Kumyk,61357,NA,NA
+1930,лакский,36,Lak,Lak,38607,NA,NA
+1930,лезгинский,133,Lezgian,Lezgian,88349,NA,NA
+1930,рутульский,5,Rutul,Rutul,6539,Borch-Khnov Rutul,3792
+1930,табасаранский,9,Tabasaran,Tabasaran,32273,NA,NA
+1930,тукитинский,2,Karata,Tokita Karata,657,NA,NA
+1930,хновский рутульский,2,Rutul,Borch-Khnov Rutul,3792,NA,NA
+1930,цахурский,13,Tsakhur,Tsakhur,3319,NA,NA
+1930,цезский,15,Tsez,Tsez,2712,Sagadin Tsez,335
+1940,аварский,158,Avar,Avar,124211,NA,NA
+1940,агульский,2,Aghul,Aghul,7272,Koshan Aghul,986
+1940,азербайджанский,97,Azerbaijani,Azerbaijani,39547,NA,NA
+1940,андийский,2,Andi,Upper Andic,6484,Lower Andic,1053
+1940,ахвахский,6,Archi,Archi,856,NA,NA
+1940,бежтинский,9,Bezhta,Bezhta,1159,NA,NA
+1940,гинухский,3,Hinuq,Hinuq,150,NA,NA
+1940,даргинский,6,Dargwa,Nuclear North Dargwa,50241,NA,NA
+1940,каратинский,7,Karata,Karata,4763,NA,NA
+1940,кумыкский,25,Kumyk,Kumyk,61357,NA,NA
+1940,лакский,6,Lak,Lak,38607,NA,NA
+1940,лезгинский,38,Lezgian,Lezgian,88349,NA,NA
+1940,рутульский,9,Rutul,Rutul,6539,Borch-Khnov Rutul,3792
+1940,табасаранский,3,Tabasaran,Tabasaran,32273,NA,NA
+1940,хновский рутульский,5,Rutul,Borch-Khnov Rutul,3792,NA,NA
+1940,цахурский,2,Tsakhur,Tsakhur,3319,NA,NA
+1940,цезский,12,Tsez,Tsez,2712,Sagadin Tsez,335
+1950,аварский,182,Avar,Avar,124211,NA,NA
+1950,азербайджанский,72,Azerbaijani,Azerbaijani,39547,NA,NA
+1950,андийский,1,Andi,Upper Andic,6484,Lower Andic,1053
+1950,ахвахский,6,Archi,Archi,856,NA,NA
+1950,багвалинский,4,Bagvalal,Bagvalal,3052,NA,NA
+1950,бежтинский,11,Bezhta,Bezhta,1159,NA,NA
+1950,гинухский,7,Hinuq,Hinuq,150,NA,NA
+1950,даргинский,5,Dargwa,Nuclear North Dargwa,50241,NA,NA
+1950,каратинский,12,Karata,Karata,4763,NA,NA
+1950,кумыкский,22,Kumyk,Kumyk,61357,NA,NA
+1950,лакский,4,Lak,Lak,38607,NA,NA
+1950,лезгинский,46,Lezgian,Lezgian,88349,NA,NA
+1950,рутульский,6,Rutul,Rutul,6539,Borch-Khnov Rutul,3792
+1950,табасаранский,4,Tabasaran,Tabasaran,32273,NA,NA
+1950,тукитинский,2,Karata,Tokita Karata,657,NA,NA
+1950,хновский рутульский,4,Rutul,Borch-Khnov Rutul,3792,NA,NA
+1950,цахурский,6,Tsakhur,Tsakhur,3319,NA,NA
+1950,цезский,13,Tsez,Tsez,2712,Sagadin Tsez,335
