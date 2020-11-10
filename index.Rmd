@@ -19,8 +19,6 @@ knitr::opts_chunk$set(fig.width=15, fig.height=7, message=FALSE, warning = FALSE
 library(tidyverse)
 ```
 
-
-
 [![DOI](https://zenodo.org/badge/296071681.svg)](https://zenodo.org/badge/latestdoi/296071681)
 
 # {.tabset .tabset-fade .tabset-pills}
@@ -179,11 +177,12 @@ ggsave("FIG_3.png", width = 12, height = 7)
 library(lme4)
 library(lmerTest)
 df %>% 
-  mutate(census_1926_modified = census_1926/10000) %>% 
+  mutate(census_1926_modified = census_1926/10000,
+         decade2 = decade/10-190) %>% 
   filter(!is.na(sum_langs)) ->
   df_reg
 
-fit <- glmer(sum_langs~sex*census_1926_modified+(1|decade) + (1|residence.en), data = df_reg, family = "poisson")
+fit <- glmer(sum_langs~sex*census_1926_modified*decade2 + (1|residence.en), data = df_reg, family = "poisson")
 performance::check_overdispersion(fit)
 ```
 
@@ -194,9 +193,6 @@ summary(fit)
 data.frame(decade = rownames(ranef(fit)$residence.en),
            intercept = ranef(fit)$residence.en) %>% 
   write_csv("residence_random_effects.csv")
-data.frame(decade = rownames(ranef(fit)$decade),
-           intercept = ranef(fit)$decade) %>% 
-  write_csv("decade_random_effects.csv")
 ```
 
 ### Figure 4
