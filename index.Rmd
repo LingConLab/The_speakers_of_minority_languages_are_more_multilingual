@@ -21,6 +21,8 @@ library(tidyverse)
 
 [![DOI](https://zenodo.org/badge/296071681.svg)](https://zenodo.org/badge/latestdoi/296071681)
 
+[link to the original dataset](https://raw.githubusercontent.com/LingConLab/The_speakers_of_minority_languages_are_more_multilingual/v0.0.1/data.csv)
+
 # {.tabset .tabset-fade .tabset-pills}
 
 ## Suplementary Materials
